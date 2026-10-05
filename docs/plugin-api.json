@@ -184,5 +184,11 @@
     "noctaliaVersion": null,
     "feature": "scroll-reveal-key",
     "introduced": "The `revealKey` prop on `ui.scroll` for scrolling a keyed child into view."
+  },
+  {
+    "level": 34,
+    "noctaliaVersion": null,
+    "feature": "input-select-all",
+    "introduced": "The `selectAll` prop on `ui.input`: select the seeded value at creation so the first keystroke replaces it."
   }
 ]

@@ -66,7 +66,7 @@ compact: it hugs its content instead of using the taller settings-panel control 
 | `ui.toggle` | `checked` (bool), `enabled`, `onChange` |
 | `ui.slider` | `min`, `max`, `step`, `value`, `controlSize` (`sm`/`md`/`lg`), `enabled`, `onChange`, `onDragEnd` |
 | `ui.select` | `options` (array of strings), `selectedIndex`, `placeholder`, `controlSize` (`sm`/`md`/`lg`), `enabled`, `width`, `height`, `onChange` |
-| `ui.input` | `value` (initial text only - see below), `placeholder`, `fontSize`, `controlSize` (`sm`/`md`/`lg`), `password` (bool), `multiline` (bool), `submitOnEnter` (bool - see below), `frameVisible` (bool - see below), `focus` (bool), `enabled`, `onChange`, `onSubmit` |
+| `ui.input` | `value` (initial text only - see below), `placeholder`, `fontSize`, `controlSize` (`sm`/`md`/`lg`), `password` (bool), `multiline` (bool), `submitOnEnter` (bool - see below), `frameVisible` (bool - see below), `focus`, `selectAll` (bool: select the seeded `value` once at creation so the first keystroke replaces it - a rename field; pair with `focus`) <PluginApiBadge feature="input-select-all" /> (bool), `enabled`, `onChange`, `onSubmit` |
 
 Every control also accepts `width`, `height`, `flexGrow`, `opacity`, and `visible`. Colors are a palette role token
 (`primary`, `on_surface`, …), a role token with an alpha suffix (`primary/0.6`, the role at 60% alpha, resolved live
