@@ -634,6 +634,8 @@ namespace ui {
 
   void UiTreeReconciler::setDragDropOverlayRoot(Node* root) { m_dragDropController->setOverlayRoot(root); }
 
+  void UiTreeReconciler::cancelDragDrop() { m_dragDropController->cancel(); }
+
   bool UiTreeReconciler::reconcile(Flex& host, const UiTreeNode& tree, Renderer& renderer) {
     std::vector<UiTreeNode> desired;
     desired.push_back(tree); // single root child of the host container

@@ -2906,6 +2906,11 @@ int main() {
           && ok;
       fired.clear();
 
+      source->inputArea()->dispatchPress(2.0F, 2.0F, BTN_LEFT, true);
+      source->inputArea()->dispatchMotion(-1.0F, 2.0F);
+      source->inputArea()->dispatchPress(-1.0F, 2.0F, BTN_LEFT, false);
+      ok = expect(fired.empty(), "a press that slides off the source below the threshold is not a click") && ok;
+
       float localX = 0.0F;
       float localY = 0.0F;
       sourceLocalPointFor(*source, *zone, localX, localY);
@@ -2929,6 +2934,21 @@ int main() {
                "a completed drag fires onDrop, never the source's onClick"
            )
           && ok;
+      fired.clear();
+
+      // A host that discards its tree mid-drag (script reload) cancels the
+      // gesture: preview gone, source restored, and the later release is inert.
+      source->inputArea()->dispatchPress(2.0F, 2.0F, BTN_LEFT, true);
+      source->inputArea()->dispatchMotion(localX, localY);
+      ok = expect(source->dragging() && !overlay.children().empty(), "drag in flight before the cancel") && ok;
+      reconciler.cancelDragDrop();
+      ok = expect(
+               !source->dragging() && overlay.children().empty() && zone->minWidth() == 4.0F,
+               "cancelDragDrop removes the preview, restores the source and collapses the gap"
+           )
+          && ok;
+      source->inputArea()->dispatchPress(localX, localY, BTN_LEFT, false);
+      ok = expect(fired.empty(), "a release after the cancel fires neither onDrop nor onClick") && ok;
     }
   }
 
