@@ -903,6 +903,9 @@ void PluginWidget::reloadScript() {
     m_label->setText("");
     m_label->setVisible(false);
   }
+  // Hiding the host dispatches no input cancellation: a drag in flight would
+  // keep its preview and could complete against the replacement tree.
+  m_reconciler.cancelDragDrop();
   m_tree.reset();
   m_warnedImperativeWhileDeclarative = false;
   if (m_uiHost)
