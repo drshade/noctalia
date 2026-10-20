@@ -21,8 +21,8 @@ public:
   void setValue(std::string value);
   void setOnDrop(std::string value);
   void setEnabled(bool enabled);
-  // While targeted, an expandOnDrag zone grows along its parent flex's main
-  // axis: width inside a row, height inside a column.
+  // While targeted, an expandOnDrag zone grows along its thin axis: a narrow
+  // marker between row members widens, a short rule between rows grows taller.
   void setDragOver(bool dragOver, float draggedWidth = 0.0F, float draggedHeight = 0.0F);
   void setExpandOnDrag(bool enabled);
   void setCollapsedWidth(float width);
