@@ -566,8 +566,8 @@ end
   and each `accepts` entry 256 bytes; at most 16 `accepts` entries.
 - **Update the model before slow persistence**: mutate + `render()` first, then save; keep a snapshot to roll back on
   failure. `enabled = false` on sources/zones is useful while a save is in flight.
-- **Scope and limits**: panels and bar widgets (the constructors are rejected with a log message on desktop widgets);
-  drags stay inside one panel or one bar widget - the ghost is drawn in the widget's own extent, so the bar's
+- **Scope and limits**: panels and bar widgets (the constructors are rejected with a log message on desktop widgets and
+  layers); drags stay inside one panel or one bar widget - the ghost is drawn in the widget's own extent, so the bar's
   cross-axis clip applies; only the left button drags; there is no OS/Wayland drag and drop, no keyboard drag (keep a
   non-drag alternative such as a move-to selector for keyboard users), and the mouse wheel cannot scroll the panel
   while a drag is active.
